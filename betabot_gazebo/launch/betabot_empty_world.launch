@@ -1,5 +1,4 @@
 <launch>
-
   <!-- ==========Simulation Environment============ -->
   <!-- using custom sdf models -->
   <env name="GAZEBO_MODEL_PATH" value="$(find betabot_gazebo)/models"/>
@@ -8,11 +7,14 @@
     <arg name="world_name" value=""/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="true"/>
+    <arg name="gui" value="false"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include> 
 
+
+
+  
   <!-- call betabot urdf description -->
   <param name="robot_description" command="$(find xacro)/xacro.py $(find betabot_description)/urdf/betabot.urdf.xacro" />
   
