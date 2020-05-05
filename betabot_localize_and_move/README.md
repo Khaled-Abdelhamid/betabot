@@ -13,7 +13,6 @@
     - [Is there other better approaches to localize your robot rather than amcl?](#is-there-other-better-approaches-to-localize-your-robot-rather-than-amcl)
     - [What are the amcl limitations or the fail cases?](#what-are-the-amcl-limitations-or-the-fail-cases)
     - [Is amcl used in domain rather than Robotics?](#is-amcl-used-in-domain-rather-than-robotics)
-  - [i couldn't find another domain that uses amacl specifically , but it's generally used to appriximate non linear filters to estimate the state of the dinmaical systems.](#i-couldnt-find-another-domain-that-uses-amacl-specifically--but-its-generally-used-to-appriximate-non-linear-filters-to-estimate-the-state-of-the-dinmaical-systems)
   - [Part III: Navigation (move_base)](#part-iii-navigation-movebase)
     - [How many official local planner available in ROS?](#how-many-official-local-planner-available-in-ros)
     - [which local planner did you use?](#which-local-planner-did-you-use)
@@ -22,7 +21,7 @@
     - [which global planner did you use?](#which-global-planner-did-you-use)
     - [In your own words how the global planner you selected works?](#in-your-own-words-how-the-global-planner-you-selected-works)
     - [State your suggestion increase the overall performance?](#state-your-suggestion-increase-the-overall-performance)
-  - [### List the most time consuming problems you faced](#h3-id%22list-the-most-time-consuming-problems-you-faced-58%22list-the-most-time-consuming-problems-you-facedh3)
+    - [List the most time consuming problems you faced](#list-the-most-time-consuming-problems-you-faced)
     - [Demos](#demos)
     - [Screenshots](#screenshots)
       - [NAME: Khaled Osama](#name-khaled-osama)
@@ -48,7 +47,7 @@ Follow where am I project from Udacity Software Robotics Engineer Nanodegree.
 ---
 ## Project Rubric
 
-![rubric](img/reviews.jpg) 
+![rubric](img/reviews.jpg)
 
 ---
 
@@ -75,17 +74,22 @@ Follow where am I project from Udacity Software Robotics Engineer Nanodegree.
 ## Part II: Localization (amcl)
 
 ### In your own words how amcl works?
+
 amcl basically implelments Monte Carlo localization approach .It takes laser scan data along with pose estimation blief and ubte the next belief accordingly until it converges to the best estimate of the robot pose.
 
 ### Is there other better approaches to localize your robot rather than amcl?
+
 it depends on the conditions and linmitations and what you want to achieve , but a general better approach is to fuse multpile algorims together to get better estimate than all of the individual algorithms.  a good design would make use of camera,amcl and odmotry at once to get better results.
 
 ### What are the amcl limitations or the fail cases?
+
 1. it has limited pose accuracy because of the nonconvexity of the laser sensor model, so we have a threshold of best acieved accurasy.
 2. amcl is limited to local and global localization only , so if the robot shut dow for a while or got kidnapped , amcl won't be able to localize the robot's position in the map.
 
 ### Is amcl used in domain rather than Robotics?
+
 i couldn't find another domain that uses amacl specifically , but it's generally used to appriximate non linear filters to estimate the state of the dinmaical systems.
+
 ---
 
 ## Part III: Navigation (move_base)
@@ -106,23 +110,31 @@ i couldn't find another domain that uses amacl specifically , but it's generally
 ---
 
 ### State your suggestion increase the overall performance?
+
 1. increase the number of particles if you want more accuracy in location , but reduce it if you want higher speed.
 2. make better map
 3. either make a smaller map or give the robot some time to explre the whole map.
 
 ### List the most time consuming problems you faced
+
 ---
 a local problem for because of an error i have made earlier (i changed the catking workspace to root mode) ,and it made the /scan topic stop working properly
-### Demos
-Add unlisted youtube/drive videos
 
-[Demo](yourlinkhere)
+### Demos
+
+
+[Demo](https://drive.google.com/file/d/1mvB0OVu2CAYWVje0eDH37sPZxcjbTVlu/view?usp=sharing)
 
 ### Screenshots
+
 1. rviz with all navigation launchers from turtulbot
 2. gazebo
 
-![image](src/betabot/betabot_localize_and_move/rvizsimulation.png)
+![image](rviz_simulation.png)
+
+![image](rviz_simulation_convergence.png)
+
+![image](gazebo_simulation.png)
 
 ---
 
