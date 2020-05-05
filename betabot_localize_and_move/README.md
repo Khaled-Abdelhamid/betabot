@@ -31,11 +31,10 @@
 
 Create a ROS package with custom launch files to localize the robot in an environment given the map and also to autonomous navigation. 
 
-*Use the given [map](map/map2d.yaml) for the myoffice world [here](../betabot_gazebo/worlds/myoffice.world)* 
+*Use the given [map](map/map2d.yaml) for the myoffice world [here](../betabot_gazebo/worlds/myoffice.world)*
 
 <p float="center">
-  <img src="img/myoffice.png" width="589" /> 
-  <img src="img/map2d.png" width="500" />
+  <img src="maps/map2d.png" width="500" />
 </p>
 
 
