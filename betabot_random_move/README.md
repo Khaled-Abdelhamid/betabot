@@ -59,7 +59,7 @@ Add unlisted youtube/drive video
 
 ### Screenshot
 
-[image](yourscreenshot)
+![image](rviz_simulation.png)
 
 ---
 

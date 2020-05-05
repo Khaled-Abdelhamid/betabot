@@ -7,7 +7,7 @@ import time
 from geometry_msgs.msg import Twist 
 from sensor_msgs.msg import LaserScan
 from std_msgs.msg import Float32
-from random import  randint
+from random import  choice
 # import sys, select, termios, tty
 
 
@@ -68,20 +68,17 @@ class Mover():
 		self.angle_increment= data.angle_increment
 	def move(self):
 		
-		rospy.init_node('mazer', anonymous=True)
-		rate = rospy.Rate(1.5) # 10hz
+		rospy.init_node('move', anonymous=True)
+		rate = rospy.Rate(3) # 10hz
 		twist = Twist()
-		thresh=.6
-  		period=2
-
+		thresh=.3
+  		period=0.5
+		self.linear_x = 0
+		self.angular_z = 0
 		while not rospy.is_shutdown():
-			self.linear_x = 0
-			self.angular_z = 0
 	
-
 			state_description = ''
-			rospy.loginfo("left:%f ,frontleft: %f ,front:%f ,front right:%f ,right:%f",
-						self.regions['left'],self.regions['fleft'],self.regions['front'],self.regions['fright'],self.regions['right']) # range value in front of the bot
+			rospy.loginfo("left:%f ,frontleft: %f ,front:%f ,front right:%f ,right:%f",self.regions['left'],self.regions['fleft'],self.regions['front'],self.regions['fright'],self.regions['right']) # range value in front of the bot
 		
 			if self.regions['front'] > thresh and self.regions['fleft'] > thresh and self.regions['fright'] > thresh:
 				state_description = 'case thresh - nothing'
@@ -90,39 +87,39 @@ class Mover():
 			elif self.regions['front'] < thresh and self.regions['fleft'] > thresh and self.regions['fright'] > thresh:
 				state_description = 'case 2 - front'
 				linear_x = 0
-				angular_z = -self.normal_angel_turn
+				angular_z = -self.normal_angel_turn * (-1)*choice([1,-1])
 				time.sleep(period)
     
 			elif self.regions['front'] > thresh and self.regions['fleft'] > thresh and self.regions['fright'] < thresh:
 				state_description = 'case 3 - fright'
 				linear_x = self.min_vel
 				angular_z = -self.normal_angel_turn
-
+				time.sleep(period*choice([0,1]))
 			elif self.regions['front'] > thresh and self.regions['fleft'] < thresh and self.regions['fright'] > thresh:
 				state_description = 'case 4 - fleft'
 				linear_x = self.min_vel
 				angular_z = self.normal_angel_turn
-
+				time.sleep(period*choice([0,1]))
 			elif self.regions['front'] < thresh and self.regions['fleft'] > thresh and self.regions['fright'] < thresh:
 				state_description = 'case 5 - front and fright'
 				linear_x = self.min_vel
 				angular_z = -self.normal_angel_turn
-
+				time.sleep(period*choice([0,1]))
 			elif self.regions['front'] < thresh and self.regions['fleft'] < thresh and self.regions['fright'] > thresh:
 				state_description = 'case 6 - front and fleft'
 				linear_x = self.min_vel
 				angular_z = self.normal_angel_turn
-
+				time.sleep(period*choice([0,1]))
 			elif self.regions['front'] < thresh and self.regions['fleft'] < thresh and self.regions['fright'] < thresh:
 				state_description = 'case 7 - front and fleft and fright'
 				linear_x = self.min_vel
-				angular_z = self.normal_angel_turn * (-1)^randint(0,1)
-
+				angular_z = self.normal_angel_turn * (-1)*choice([1,-1])
+				time.sleep(period*choice([0,1]))
 			elif self.regions['front'] > thresh and self.regions['fleft'] < thresh and self.regions['fright'] < thresh:
 				state_description = 'case 8 - fleft and fright'
 				linear_x = self.min_vel
-				angular_z =self.normal_angel_turn * (-1)^randint(0,1)
-
+				angular_z =self.normal_angel_turn * (-1)*choice([1,-1])
+				time.sleep(period*choice([0,1]))
 			else:
 				state_description = 'unknown case'
 				rospy.loginfo(self.regions)

@@ -8,7 +8,7 @@
     <arg name="world_name" value="$(find betabot_gazebo)/worlds/mymaze.world"/>
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
-    <arg name="gui" value="false"/>
+    <arg name="gui" value="true"/>
     <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
   </include> 
@@ -32,5 +32,6 @@
 
   <!-- ============================================= -->
   <!-- =================ExtraParam================== -->
-
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find betabot_random_move)/rviz/config.rviz" />
+  
 </launch>

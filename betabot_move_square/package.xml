@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>move_square</name>
+  <name>betabot_move_square</name>
   <version>0.0.0</version>
-  <description>The move_square package</description>
+  <description>The betabot_move_square package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

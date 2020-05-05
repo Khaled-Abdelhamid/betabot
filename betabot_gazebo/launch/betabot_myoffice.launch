@@ -9,7 +9,7 @@
     <arg name="paused" value="false"/>
     <arg name="use_sim_time" value="true"/>
     <arg name="gui" value="false"/>
-    <arg name="headless" value="true"/>
+    <arg name="headless" value="false"/>
     <arg name="debug" value="false"/>
 
     
@@ -33,8 +33,8 @@
   <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" output="screen" args="-param robot_description -urdf -model betabot  -x 0.0 -y 0.0 -z 0.0" /> -->
 
 
-    <arg name="x" default="-1"/>
-    <arg name="y" default="-1"/>
+    <arg name="x" default="0"/>
+    <arg name="y" default="0"/>
     <arg name="z" default="0"/>
     <arg name="roll" default="0"/>
     <arg name="pitch" default="0"/>

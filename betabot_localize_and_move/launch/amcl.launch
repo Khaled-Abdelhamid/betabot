@@ -1,18 +1,24 @@
 <launch>
-    <!-- Map server node and argument -->
+
+
+  <include file="$(find betabot_gazebo)/launch/betabot_myoffice.launch"/>
+  <node type="rviz" name="rviz" pkg="rviz" args="-d $(find betabot_localize_and_move)/rviz/config.rviz" />
+  
+  <!-- Map server node and argument -->
   <arg name="map_file" default="$(find betabot_localize_and_move)/maps/map_2d.yaml"/>
   <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
-  
   
   <!-- AMCL Node -->
   <node name="amcl" pkg="amcl" type="amcl" output="screen">
     <param name="odom_frame_id" value="odom"/>
     <param name="odom_model_type" value="diff-corrected"/>
     <param name="base_frame_id" value="base_footprint"/>
-    <param name="min_particles" value="300"/>
-    <param name="max_particles" value="800"/>
+    <param name="min_particles" value="200"/>
+    <param name="max_particles" value="500"/>
     <param name="global_frame_id" value="map"/>
   </node>
+  
+  
   
   <node name="move_base" pkg="move_base" type="move_base" respawn="false" output="screen">
     <param name="base_global_planner" value="navfn/NavfnROS" />
