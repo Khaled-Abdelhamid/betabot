@@ -2,8 +2,7 @@
 
 - [Betabot Localization and Navigation](#betabot-localization-and-navigation)
   - [Project Description](#project-description)
-  - [GUID](#guid)
-  - [Project Rubric](#project-rubric)
+  - [GUIDE](#guide)
   - [After you implement the pkg state your reflection below](#after-you-implement-the-pkg-state-your-reflection-below)
   - [Part I: Map (map_server)](#part-i-map-mapserver)
     - [In your own words how maps are represented in ROS?](#in-your-own-words-how-maps-are-represented-in-ros)
@@ -33,20 +32,14 @@ Create a ROS package with custom launch files to localize the robot in an enviro
 
 *Use the given [map](map/map2d.yaml) for the myoffice world [here](../betabot_gazebo/worlds/myoffice.world)*
 
-<p float="center">
-  <img src="maps/map2d.png" width="500" />
-</p>
 
+[image](maps/map.png)
 
 >NOTE: For the given map and a world the betabot robot should localize it self and move from currant pose to a given goal autonomously
 
-## GUID
+## GUIDE
+
 Follow where am I project from Udacity Software Robotics Engineer Nanodegree.
-
----
-## Project Rubric
-
-![rubric](img/reviews.jpg)
 
 ---
 
